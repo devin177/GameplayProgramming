@@ -4,28 +4,29 @@ using UnityEngine;
 
 namespace Arcanum
 {
-    public enum Spells { Fireball, BlackHole, Meteor}
+    public enum Spells { Boomerang, Rain, Vegetable }
 
-    [RequireComponent(typeof(BlackHoleMaker))]
-    [RequireComponent(typeof(FireballMaker))]
+    [RequireComponent(typeof(VegetableMaker))]
+    [RequireComponent(typeof(RainMaker))]
+    [RequireComponent(typeof(BoomerangMaker))]
     public class SpellFactory : MonoBehaviour
     {
         public void BuildSpell(Spells type)
-        {
-            if(Spells.BlackHole == type)
+        { 
+            if (Spells.Boomerang == type)
             {
-                var blackHole = this.GetComponent<BlackHoleMaker>().Make();
-                blackHole.transform.position = this.transform.position;
+                var boomerang = this.GetComponent<BoomerangMaker>().Make();
+                boomerang.transform.position = this.transform.position;
             }
-            else if (Spells.Fireball == type)
+            else if (Spells.Rain == type)
             {
-                var fireball = this.GetComponent<FireballMaker>().Make();
-                fireball.transform.position = this.transform.position;
+                var rain = this.GetComponent<RainMaker>().Make();
+                // rain.transform.position = this.transform.position;
+                rain.transform.position = GameObject.Find("Ground").transform.position;
             }
-            else if (Spells.Meteor == type)
+            else if (Spells.Vegetable == type)
             {
-                var fireball = this.GetComponent<MeteorMaker>().Make();
-                fireball.transform.position = this.transform.position;
+                this.GetComponent<VegetableMaker>().Make();
             }
         }
 
@@ -33,16 +34,15 @@ namespace Arcanum
         {
             if (Input.GetButtonDown("Jump"))
             {
-
-                this.BuildSpell(Spells.BlackHole);
+                this.BuildSpell(Spells.Boomerang);
             }
             else if(Input.GetButtonDown("Fire1"))
             {
-                this.BuildSpell(Spells.Fireball);
+                this.BuildSpell(Spells.Rain);
             }
             else if (Input.GetButtonDown("Fire2"))
             {
-                this.BuildSpell(Spells.Meteor);
+                this.BuildSpell(Spells.Vegetable);
             }
          }
 

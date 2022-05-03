@@ -2,9 +2,9 @@
 
 public class Factory : MonoBehaviour
 {
-    public enum Spells { Fireball, BlackHole, Meteor}
+    public enum Spells { Boomerang, Rain, Vegetable}
 
-    private static int SerialID = 0;
+    // private static int SerialID = 0;
 
     public MonoBehaviour GetNewInstance(Spells type)
     {
