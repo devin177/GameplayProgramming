@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Arcanum
+namespace Cowtech
 {
     public class BoomerangMaker : MonoBehaviour, IFactorySpell
     {
